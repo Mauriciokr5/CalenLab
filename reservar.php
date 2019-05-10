@@ -1,136 +1,115 @@
-<?php 
-
-  session_start();
-
-  require 'database.php';
-
-  if (isset($_SESSION['Id_Usuario'])) {
-
-    $Id_Usuario = $_SESSION['Id_Usuario'];
-    $TiposUsuario = $_SESSION['TiposUsuario'];
-
-    $stmt = "SELECT * FROM Usuario WHERE Id_Usuario='$Id_Usuario'";
-
-    $Ejecutar = sqlsrv_query($con,$stmt);
-
-    $Datos = sqlsrv_Fetch_array($Ejecutar);
-
-    $User = null;
-
-    if (count($Datos)>0 && ($TiposUsuario == 1 || $TiposUsuario==2) ) {
-      $User = $Datos;
-
-    }
-
-  }
-
- ?>
-
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar_css.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Roboto" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Reservar</title>
+    <title>Registro</title>
     <!--<link rel="stylesheet" href="assets/css/style.css">-->
   </head>
-
-    <!--<link rel="stylesheet" href="assets/css/style.css">-->
-
   <body>
+
+    <?php require 'partials/headerAdmin.php'?>
 
     <?php if (!empty($message)): ?>
       <p><?= $message ?></p>
     <?php endif; ?>
 
-    <?php if (!empty($User)):?>
 
-  <?php require 'partials/headerAdmin.php' ?>
+    <h1>Registro</h1>
     <span><a href="reservar.php"></a> </span>
 
-
-  <div class="container">
-      <h1 class="rale">Reserva</h1>
-    <div class="row justify-content-md-center">
-      <div class="man col-md-4">
-
-        <form action="reservar.php" method="post">
-          <input required="true" type="text" name="title" placeholder="Titulo" class="form-control"><br>
-          <input required="true" type="text" name="Grupo" placeholder="Grupo" class="form-control"><br>
-          <input required="true" type="text" name="UnidadAprendizaje" placeholder="Unidad de Aprendizaje" class="form-control"><br>
-          <input required="true" type="text" name="Asunto" placeholder="Asunto" class="form-control"><br>
-
-          <p style="color:#ffffff">Color de fondo</p>
-          <input required="true" type="color" name="color" class="form-control"><br>
-          <select name="Laboratorios" class="form-control">
-           <?php   
-                    require 'database.php';
-                    $sentencia= "SELECT * FROM Laboratorios WHERE Visibilidad = 1";
-                    $resultado = sqlsrv_query($con,$sentencia);
-                    while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
-                    }
-                   ?>
-          </select><br>
-          <input required="true" type="color" name="textColor" class="form-control" placeholder="Color de texto"><br>
-          <div>
-          <p style="color: #ffffff">Fecha de inicio</p>
-          <input required="true" type="date" min="<?php echo date("Y-m-d");?>" name="start"> <input required="true" type="time" name="start2">
-          </div><br>
-          <div>
-          <p style="color: #ffffff">Fecha de termino</p>
-          <input required="true" type="date" min="<?php echo date("Y-m-d");?>" name="end"> <input required="true" type="time" name="end2">
-          </div><br>
-          <input type="submit" name="Insertar" value="Enviar" class="form-control bot">
-        </form>
-
-
-      </div>
-    </div>
-  </div>
+    <form action="reservar.php" method="post">
+      <input type="text" name="UnidadAprendizaje" placeholder="Unidad deaprendizaje"><br>
+      <input type="datetime" name="HoraIncio" placeholder="Hora de Inicio"><br>
+      <input type="datetime" name="HoraTermino" placeholder="Hora de HoraTermino"><br>
+      <input type="text" name="Grupo" placeholder="Grupo"><br>
+      <input type="text" name="Asunto" placeholder="Asunto"><br>
+      <select name="Laboratorios">
+        <option value="1">Bases de datos</option>
+        <option value="2">NUEVAS TECNOLOGIAS</option>
+        <option value="3">Desarrollo de software</option>
+        <option value="4">Siglo XXI</option>
+        <option value="5">Aula Samsung</option>
+        <option value="6">Aula Interactiva</option>
+      </select><br>
+      <select name="Area">
+        <option value="1">Area Basica</option>
+        <option value="2">Humanistica</option>
+        <option value="3">Programacion</option>
+        <option value="4">Maquinas c/Sistemas automatizados</option>
+        <option value="5">Sistemas Digitales</option>
+      </select><br>
+      <input type="submit" name="Insertar" value="Enviar">
+    </form>
 
   <?php
   require 'database.php';
 
   if (isset($_POST['Insertar'])) {
-    $title=$_POST['title'];
-    $Grupo=$_POST['Grupo'];
-    $UnidadAprendizaje=$_POST['UnidadAprendizaje'];
-    $Asunto= $_POST['Asunto'];
-    $color=$_POST['color'];
+    $UnidadAprendizaje =$_POST['UnidadAprendizaje'];
+
+
+    $HoraIncio =new DateTime($_POST['HoraIncio']);
+    $strHoraInicio=$HoraIncio-> format('Y-m-d-H-i-s');
+  
+
+
+    $HoraTermino =new DateTime($_POST['HoraTermino']);
+    $strHoratermino=$HoraTermino->format('Y-m-d-H-i-s');
+
+
+    $Grupo =$_POST['Grupo'];
+    //$Contraseña = password_hash($_POST['Contraseña'], PASSWORD_BCRYPT);
+    //$Contraseña = $_POST['Contraseña'];
+    $Asunto =$_POST['Asunto'];
     $Laboratorios =$_POST['Laboratorios'];
-    $Usuario=$_SESSION['Id_Usuario'];
-    $textColor=$_POST['textColor'];
+    $Area =$_POST['Area'];
+    $Usuario ="1";
 
-
-    $start=$_POST['start']." ".$_POST['start2'];
-    //$timestart = strtotime($start);
-    //$timestart2=date('Y-m-d h:i:s',$timestart);
-
-
-    $end=$_POST['end']." ".$_POST['end2'];
-    //$timeend = strtotime($end);
-    //$timeend2= date('Y-m-d h:i:s',$timeend);
-
-  $sql= "INSERT INTO Reserva (title,Grupo,UnidadAprendizaje,Asunto,color,Laboratorios,Usuario,textColor,start,fin) VALUES ('$title','$Grupo','$UnidadAprendizaje','$Asunto','$color','$Laboratorios','$Usuario','$textColor','$start','$end')";
+    $sql= "INSERT INTO Reserva (UnidadAprendizaje, HoraIncio, HoraTermino, Grupo, Asunto,Laboratorios, Usuario) VALUES ('$UnidadAprendizaje','$strHoraInicio','$strHoratermino','$Grupo','$Asunto','$Laboratorios','$Usuario')";
 
     $Ejecutar = sqlsrv_query($con,$sql);
 
-   if($Ejecutar === false){
-     die( print_r( sqlsrv_errors(), true));
-   }else {
-     echo "Todo bien";
+    if($Ejecutar === false){
+      die( print_r( sqlsrv_errors(), true));
+    }else {
+      echo "Todo bien";
   }
 }
+    //require 'database.php';
 
-?>
-<?php else: ?>
-    <h1>Please Login</h1>
-    <h2>No cunetas con los permisos necesarios para realizar esto</h2>
-    <a href="login.php">Login</a>
-  <?php endif;?>
+  //  $message = '';
+
+  //  if (!empty($_POST['ApPat']) && !empty($_POST['ApMat']) && !empty($_POST['Nombre']) && !empty($_POST['Correo'])  && !empty($_POST['Contraseña']) && !empty($_POST['Sexo']) && !empty($_POST['Area']) && !empty($_POST['Rol']) && !empty($_POST['TiposUsuario']) && !empty($_POST['Visibilidad'])){
+
+  //  $sql= "INSERT INTO Usuario (Id_Usuario, ApPat, ApMat, Nombre, Correo, Contraseña, Sexo, FechaAlta, FechaBaja, Area, Rol, TiposUsuario, Visibilidad) VALUES (NULL, :ApPat, :ApMat, :Nombre, :Correo, :Contraseña, :Sexo, NULL, NULL, :Area, :Rol, :TiposUsuario, :Visibilidad)";
+
+  //  $stmt = sqlsrv_prepare($conn,$sql);
+
+  //   $stmt->bindParam(1,':ApPat',$_POST['ApPat'],PDO::PARAM_STR);
+  //   $stmt->bindParam(1,':ApMat',$_POST['ApMat']);
+  //   $stmt->bindParam(1,':Nombre',$_POST['Nombre']);
+  //   $stmt->bindParam(1,':Correo',$_POST['Correo']);
+  //   $Contrasena = password_hash($_POST['Contraseña']);
+  //   $stmt->bindParam(1,':Contraseña',$Contrasena);
+  //   $stmt->bindParam(1,':Sexo',$_POST['Sexo']);
+  //   $stmt->bindParam(1,':Area',$_POST['Area']);
+  //   $stmt->bindParam(1,':Rol',$_POST['Rol']);
+  //   $stmt->bindParam(1,':TiposUsuario',$_POST['TiposUsuario']);
+  //   $stmt->bindParam(1,':Visibilidad',$_POST['Visibilidad']);
+
+
+  //     if($stmt->sqlsrv_execute()){
+  //       $message = 'usuario creado satisfactoriamente';
+  //     }else{
+  //       $message = 'No se ha podido crear el usuario';
+  //     }
+  //   }
+  ?>
+
+
+
   </body>
 </html>

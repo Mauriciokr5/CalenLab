@@ -5,9 +5,6 @@
 
 	function EliminarLaboratorio($Id_Laboratorio){
 		require 'database.php';
-
-	  //$setencia = "DELETE FROM Laboratorios WHERE Id_Laboratorios = 'Id_Laboratorio'";
-
 		$sentencia = "UPDATE Laboratorios SET Visibilidad='2' WHERE Id_Laboratorios='$Id_Laboratorio'";
 
 		$DatosConsulta=sqlsrv_query($con,$sentencia);

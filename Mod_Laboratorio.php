@@ -58,11 +58,11 @@ return[
             
 
             <p class="tit">Nombre del laboratorio</p>
-            <input type="text" name="Laboratorio" class="form-control" required="true" value="<?php echo $DatoObtenido[1] ?>">
+            <input type="text" name="Laboratorio" class="form-control" value="<?php echo $DatoObtenido[1] ?>">
             
 
             <p class="tit">Visibilidad</p>
-            <input type="text" name="Visibilidad"class="form-control" required="true" value="<?php echo $DatoObtenido[2] ?>">
+            <input type="text" name="Visibilidad"class="form-control" value="<?php echo $DatoObtenido[2] ?>">
             <br>
 
             <input type="submit" name="Aceptar" value="Enviar" class="form-control bot">

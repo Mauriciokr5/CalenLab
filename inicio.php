@@ -41,7 +41,7 @@
 
   <div class="container v">
     <p class="bie"><?php if (!empty($User)):?>
-  <br>Bienvenido Administrador <?= $User['Nombre'] ?></p>  
+  <br>Bienvenido <?= $User['Nombre'] ?></p>  
   </div>
 
 

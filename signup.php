@@ -57,50 +57,36 @@
     <div class="row justify-content-md-center">
       <div class="man col-md-4">
         <form action="signup.php" method="post">
-          <input required="true" type="text" name="ApPat" placeholder="Apellido Paterno" class="form-control" pattern="[A-Za-z ]"><br>
-          <input required="true" type="text" name="ApMat" placeholder="Apellido Materno" class="form-control" pattern="[A-Za-z ]"><br>
-          <input required="true" type="text" name="Nombre" placeholder="Nombre(s)" class="form-control" pattern="[A-Za-z ]"><br>
-          <input required="true" type="email" name="Correo" placeholder="Correo Electronico" class="form-control"><br>
-          <input required="true" type="text" name="Contraseña" placeholder="Contraseña" class="form-control"><br>
-          <select required="true" name="Sexo" class="form-control">
+          <input type="text" name="ApPat" placeholder="Apellido Paterno" class="form-control"><br>
+          <input type="text" name="ApMat" placeholder="Apellido Materno" class="form-control"><br>
+          <input type="text" name="Nombre" placeholder="Nombre(s)" class="form-control"><br>
+          <input type="text" name="Correo" placeholder="Correo Electronico" class="form-control"><br>
+          <input type="text" name="Contraseña" placeholder="Contraseña" class="form-control"><br>
+          <select name="Sexo" class="form-control">
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
           </select><br>
-          <select required="true" name="Area" class="form-control">
-              <?php   
-                    require 'database.php';
-                    $sentencia= "SELECT * FROM Area";
-                    $resultado = sqlsrv_query($con,$sentencia);
-                    while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_Area'].'">'.$filas['Area'].'</option>';
-                    }
-                   ?>
+          <select name="Area" class="form-control">
+            <option value="1">Area Basica</option>
+            <option value="2">Humanistica</option>
+            <option value="3">Programacion</option>
+            <option value="4">Maquinas c/Sistemas automatizados</option>
+            <option value="5">Sistemas Digitales</option>
           </select><br>
-          <select required="true" name="Rol" class="form-control">
-              <?php   
-                    require 'database.php';
-                    $sentencia= "SELECT * FROM Rol";
-                    $resultado = sqlsrv_query($con,$sentencia);
-                    while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_Rol'].'">'.$filas['Rol'].'</option>';
-                    }
-                   ?>
+          <select name="Rol" class="form-control">
+            <option value="1">Profesor</option>
+            <option value="2">Alumno</option>
+            <option value="3">PAE</option>
           </select><br>
-          <select required="true" name="TiposUsuario" class="form-control">
-              <?php   
-                    require 'database.php';
-                    $sentencia= "SELECT * FROM TiposUsuario WHERE Id_TiposUsuario > 1";
-                    $resultado = sqlsrv_query($con,$sentencia);
-                    while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_TiposUsuario'].'">'.$filas['TipoUsuario'].'</option>';
-                    }
-                   ?>
+          <select name="TiposUsuario" class="form-control">
+            <option value="2">Administrador</option>
+            <option value="3">Solicitante</option>
           </select><br>
-          <select required="true" name="Visibilidad" class="form-control">
+          <select name="Visibilidad" class="form-control">
             <option value="1">Visible</option>
             <option value="2">No Visible</option>
           </select><br>
-          <input  type="submit" name="Insertar" value="Enviar" class="form-control bot">
+          <input type="submit" name="Insertar" value="Enviar" class="form-control bot">
         </form>
       </div>
     </div>

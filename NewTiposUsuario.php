@@ -58,7 +58,7 @@
       <div class="man col-md-4">
 
         <form action="NewTiposUsuario.php" method="post">
-          <input type="text" required="true" name="TipoUsuario" placeholder="Tipo de Usuario" class="form-control"><br>
+          <input type="text" name="TipoUsuario" placeholder="Tipo de Usuario" class="form-control"><br>
           <input type="submit" name="Insertar" value="Enviar" class="form-control bot">
         </form>
 

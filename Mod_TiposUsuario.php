@@ -53,14 +53,14 @@ return[
 <!-- ndgasidfgasdfsagfasdf<hkgzidfh<dfilhfs-->
           <form action="Mod_TiposUsuario2.php" method="post">
             <p class="tit">Id</p>
-            <input type="text" required="true" name="Id_TiposUsuario" class="form-control" value="<?php echo $DatoObtenido[0] ?>" readonly>
+            <input type="text" name="Id_TiposUsuario" class="form-control" value="<?php echo $DatoObtenido[0] ?>" readonly>
             
 
             <p class="tit">Tipo de usuario</p>
-            <input type="text" required="true" name="TipoUsuario" class="form-control" value="<?php echo $DatoObtenido[1] ?>">
+            <input type="text" name="TipoUsuario" class="form-control" value="<?php echo $DatoObtenido[1] ?>">
             <br>
 
-            <input type="submit"  name="Aceptar" value="Enviar" class="form-control bot">
+            <input type="submit" name="Aceptar" value="Enviar" class="form-control bot">
           </form>
         </div>
 

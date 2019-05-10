@@ -58,8 +58,8 @@
       <div class="man col-md-4">
 
         <form action="NewLab.php" method="post">
-          <input type="text" required="true" name="Laboratorio" placeholder="Laboratorio" class="form-control"><br>
-          <select name="Visibilidad" class="form-control" required="true">
+          <input type="text" name="Laboratorio" placeholder="Laboratorio" class="form-control"><br>
+          <select name="Visibilidad" class="form-control">
             <option value="1">Visible</option>
             <option value="2">No Visible</option>
           </select><br>

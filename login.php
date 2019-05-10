@@ -18,27 +18,16 @@
         $Datos = sqlsrv_fetch_array($Ejecutar,SQLSRV_FETCH_ASSOC);
 
         $message = '';
-      
+
         if(count($Datos) > 0 && password_verify($_POST['Contraseña'],$Datos['Contraseña'])){
-          if ($Datos['Visibilidad']==1) {
           $_SESSION['Id_Usuario']=$Datos['Id_Usuario'];
           $_SESSION['TiposUsuario']=$Datos['TiposUsuario'];
           $_SESSION['Rol']=$Datos['Rol'];
-
-            if ($_SESSION['TiposUsuario'] <= 2) {
-              header('location: inicio.php');
-            }elseif ($_SESSION['TiposUsuario'] > 2) {
-              header('location: inicioSolicitante.php');
-            }
-
+          header('location: inicio.php');
         }else{
-          $message = "<p style='color:#FF0000'>Tu estatus es inactivo<p/>";
+          $message = 'No hay coincidencia en la base de datos';
         }
-      }else{
-        $message = "<p style='color:#FF0000'>No hay coincidencia en la base de datos<p/>";
       }
-      }
-
     }
  ?>
 
@@ -74,13 +63,13 @@
           <form action="login.php" method="post">
             <p class="tit">Correo</p>
 
-            <input type="email" name="Correo" placeholder="Correo" class="form-control" required="true">
+            <input type="text" name="Correo" placeholder="Correo" class="form-control">
             <br>
             <p class="tit">Contraseña</p>
 
-            <input type="password" name="Contraseña" placeholder="Contraseña" class="form-control" required="true">
+            <input type="password" name="Contraseña" placeholder="Contraseña" class="form-control">
             <br><br>
-            <input type="submit" name="Aceptar" value="Enviar" class="form-control bot" required="true">
+            <input type="submit" name="Aceptar" value="Enviar" class="form-control bot">
           </form>
         </div>
 

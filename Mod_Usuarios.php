@@ -58,57 +58,51 @@ return[
 
       <div class="row justify-content-md-center">
 
-        <div class="man col-md-7">
+        <div class="man col-md-4">
 <!-- ndgasidfgasdfsagfasdf<hkgzidfh<dfilhfs-->
           <form action="Mod_Usuario2.php" method="post">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="tit">Id</p>
-                <input type="text" required="true" name="Id_Usuario" class="form-control" value="<?php echo $DatoObtenido[0] ?>" readonly>
-                
-
-                <p class="tit">Apellido Paterno</p>
-                <input type="text" required="true" name="ApPat" class="form-control" value="<?php echo $DatoObtenido[1] ?>">
-                
-
-                <p class="tit">Apellido materno</p>
-                <input type="text" required="true" name="ApMat"class="form-control" value="<?php echo $DatoObtenido[2] ?>">
-                
-
-                <p class="tit">Nombre</p>
-                <input type="text" required="true" name="Nombre" class="form-control" value="<?php echo $DatoObtenido[3] ?>">
-                
-
-                <p class="tit">Correo</p>
-                <input type="text" required="true" name="Correo" class="form-control" value="<?php echo $DatoObtenido[4] ?>">
-                
-
-                <p class="tit">Contraseña</p>
-                <input type="text" required="true" name="Contraseña" class="form-control">
-                
-              </div>
-              <div class="col-md-6">
-                <p class="tit">Sexo</p>
-                <input type="text" required="true" name="Sexo" class="form-control" value="<?php echo $DatoObtenido[6] ?>">
-                
-
-                <p class="tit">Area</p>
-                <input type="text" required="true" name="Area" class="form-control" value="<?php echo $DatoObtenido[7] ?>">
-                
-
-                <p class="tit">Rol</p>
-                <input type="text" required="true" name="Rol" class="form-control" value="<?php echo $DatoObtenido[8] ?>">
-                
-
-                <p class="tit">Tipo de usuario</p>
-                <input type="text" required="true" name="TiposUsuario" class="form-control" value="<?php echo $DatoObtenido[9] ?>">
-                
-
-                <p class="tit">Visibilidad</p>
-                <input type="text" required="true" name="Visibilidad" class="form-control" value="<?php echo $DatoObtenido[10] ?>">
-              </div>
-            </div>
+            <p class="tit">Id</p>
+            <input type="text" name="Id_Usuario" class="form-control" value="<?php echo $DatoObtenido[0] ?>" readonly>
             
+
+            <p class="tit">Apellido Paterno</p>
+            <input type="text" name="ApPat" class="form-control" value="<?php echo $DatoObtenido[1] ?>">
+            
+
+            <p class="tit">Apellido materno</p>
+            <input type="text" name="ApMat"class="form-control" value="<?php echo $DatoObtenido[2] ?>">
+            
+
+            <p class="tit">Nombre</p>
+            <input type="text" name="Nombre" class="form-control" value="<?php echo $DatoObtenido[3] ?>">
+            
+
+            <p class="tit">Correo</p>
+            <input type="text" name="Correo" class="form-control" value="<?php echo $DatoObtenido[4] ?>">
+            
+
+            <p class="tit">Contraseña</p>
+            <input type="text" name="Contraseña" class="form-control">
+            
+
+            <p class="tit">Sexo</p>
+            <input type="text" name="Sexo" class="form-control" value="<?php echo $DatoObtenido[6] ?>">
+            
+
+            <p class="tit">Area</p>
+            <input type="text" name="Area" class="form-control" value="<?php echo $DatoObtenido[7] ?>">
+            
+
+            <p class="tit">Rol</p>
+            <input type="text" name="Rol" class="form-control" value="<?php echo $DatoObtenido[8] ?>">
+            
+
+            <p class="tit">Tipo de usuario</p>
+            <input type="text" name="TiposUsuario" class="form-control" value="<?php echo $DatoObtenido[9] ?>">
+            
+
+            <p class="tit">Visibilidad</p>
+            <input type="text" name="Visibilidad" class="form-control" value="<?php echo $DatoObtenido[10] ?>">
             <br>
 
             <input type="submit" name="Aceptar" value="Enviar" class="form-control bot">

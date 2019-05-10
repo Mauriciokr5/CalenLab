@@ -50,7 +50,7 @@
 				<th>Id</th>
 				<th>Laboratorio</th>
 				<th>Fecha De Alta</th>
-				<!--<th>Visibilidad</th>--> 
+				<th>Visibilidad</th> 
 				<th><a href="NewLab.php"><button type="button" class="btn btn-success">Nuevo</button></a></th>
 			</tr>
 		</thead>
@@ -64,7 +64,7 @@ echo "<tbody>";
 		echo "<td>"; echo $filas['Id_Laboratorios']; echo "</td>";
 		echo "<td>"; echo $filas['Laboratorio']; echo "</td>";
 		echo "<td>"; echo $fecha = $filas['FechaAlta']->format('Y-m-d H:i:s'); echo "</td>";
-		//echo "<td>"; echo $filas['Visibilidad']; echo "</td>";
+		echo "<td>"; echo $filas['Visibilidad']; echo "</td>";
 		echo "<td><a href='Mod_Laboratorio.php?Id_Laboratorios2=".$filas['Id_Laboratorios']."'><button type='button' class='btn btn-success'>Modificar</button></a></td>";
 
 		echo "<td><a href='Eliminar_Laboratorio.php?Id_Laboratorios2=".$filas['Id_Laboratorios']."'><button type='button' class='btn btn-warning'>Eliminar</button></a></td>";

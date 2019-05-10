@@ -12,7 +12,7 @@
 <body>   
   
   <?php require 'partials/headerNormal.php' ?>
-  
+
   <div class="back"></div>
   <div class="deg"></div>
   <div class="tex">CalenLAB es una aplicación principalmente enfocada a el mejoramiento del control de los laboratorios del Centro de Estudios Científicos y Tecnológicos núm. 9 Juan de Dios Bátiz, para poder usar estos servicos ponerte en contacto con el administrador y solicitar tu cuenta.</div>

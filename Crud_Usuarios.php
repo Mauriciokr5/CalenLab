@@ -64,7 +64,7 @@
 		</thead>
 <?php 
 require 'database.php';
-$sentencia= "SELECT * FROM Usuarios Except SELECT * FROM Usuarios WHERE Id_Usuario =2";
+$sentencia= "SELECT * FROM Usuarios";
 $resultado = sqlsrv_query($con,$sentencia);
 while($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)){
 echo "<tbody>";
