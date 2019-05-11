@@ -1,7 +1,7 @@
 <?php
   $serverName = 'Localhost\sqlexpress';
 
-  $connectionInfo = array("Database"=>"Agenda", "UID"=>"Kronos", "PWD"=>"ennui", "CharacterSet"=>"UTF-8");
+  $connectionInfo = array("Database"=>"Agenda", "UID"=>"equipo-5", "PWD"=>"Peru", "CharacterSet"=>"UTF-8");
   $con = sqlsrv_connect($serverName, $connectionInfo);
 
   if( $con ) {

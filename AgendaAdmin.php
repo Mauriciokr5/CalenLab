@@ -106,6 +106,7 @@
 					//$("#exampleModal").modal();
 				//},
 				<?php  
+				require 'database.php';
 				$sentencia= "SELECT * FROM Agenda2 WHERE Id_Laboratorios = $NumLABO";
 
 				$Ejecutar = sqlsrv_query($con,$sentencia);
@@ -136,7 +137,13 @@
 				$res = json_encode($Resultados);
 				?>
 
-					events:<?php echo $res; ?>,
+				<?php if ($Resultados) {
+					echo ("events:".$res.",");
+				} else{
+					
+				}
+
+				?>
 
 				eventClick: function(calEvent,jsEvent,view){
 					let inicio = calEvent.start.toString();
