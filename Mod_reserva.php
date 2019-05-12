@@ -107,10 +107,10 @@ return[
                 <input type="color" name="textColor" required="true" class="form-control" value="<?php echo $DatoObtenido[8] ?>"><br>
 
                 <p class="tit">Fecha de inicio</p>
-                <input type="text" name="start" required="true" class="form-control" value="<?php echo $DatoObtenido[9] ?>" size="15"><br>
+                <input type="datetime-local" name="start" required="true" class="form-control" value="<?php echo $DatoObtenido[9]->format('Y-m-d').'T'.$DatoObtenido[9]->format('H:i:s') ?>" size="15"><br>
 
                 <p class="tit">Fecha de termino</p>
-                <input type="text" name="end" required="true" class="form-control" value="<?php echo $DatoObtenido[10] ?>" size="15"><br><br>
+                <input type="datetime-local" name="end" required="true" class="form-control" value="<?php echo $DatoObtenido[10]->format('Y-m-d').'T'.$DatoObtenido[10]->format('H:i:s') ?>" size="15"><br><br>
 
                 <input type="submit" name="Aceptar" value="Enviar" class="form-control bot">
 
@@ -120,7 +120,7 @@ return[
         </div>
       </div>
     </div>
-
+    <?php echo $DatoObtenido[10]->format('Y-m-d').'T'.$DatoObtenido[10]->format('H:i:s') ?>
 
 
       <?php else: ?>
