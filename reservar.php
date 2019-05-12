@@ -95,11 +95,11 @@
 
             <div class="col-sm">
             <p style="color: #ffffff">Hora de inicio</p>
-            <input required="true" type="time" name="start2" class="form-control">
+            <input required="true" type="time" name="start2" id="inicio" class="form-control" oninput="validarHora()">
             </div>
             <div  class="col-sm">
             <p style="color: #ffffff">Hora de termino</p>
-            <input required="true" type="time" name="end2"  class="form-control">
+            <input required="true" type="time" name="end2" id="fin"  class="form-control" oninput="validarHoraFinal()">
             </div>
           </div>
           <br>
@@ -152,7 +152,7 @@
       if($Ejecutar === false){
         die( print_r( sqlsrv_errors(), true));
       }else {
-        echo "<script>location.replace(\"agendaLabos.php\");</script>";
+        echo "<script>alert('Reserva exitosa');location.replace(\"agendaLabos.php\");</script>";
       }
     }
 
@@ -165,5 +165,43 @@
     <h2>No cunetas con los permisos necesarios para realizar esto</h2>
     <a href="login.php">Login</a>
   <?php endif;?>
+  <script>
+        function validarHora() {
+            var horaInicio = document.getElementById("inicio").value;
+            var remplazoUltimoNum = (parseInt(horaInicio.charAt(horaInicio.length - 1)) + 1) + "";
+
+            if (remplazoUltimoNum == '10') {
+                remplazoUltimoNum = '9';
+            }
+            var horaMinima = horaInicio.replaceAt((horaInicio.length - 1), remplazoUltimoNum);
+            console.log(horaMinima);
+
+            document.getElementById("fin").min = horaMinima;
+        }
+        String.prototype.replaceAt = function(index, replacement) {
+            return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+        }
+
+
+        function validarHoraFinal() {
+            var horaInicio = document.getElementById("fin").value;
+            var horas = horaInicio.substring(0, 2);
+            var minutos = horaInicio.substring(3, 5);
+            if (minutos == '00') {
+                if (parseInt(horas) <= 0) {
+                    horas = 11;
+                } else {
+                    horas = (parseInt(horas) - 1);
+                }
+                console.log(horas);
+                if (horas < 10) {
+                    horas = "0" + horas;
+                    console.log('entro');
+                }
+                minutos = '59';
+                document.getElementById("fin").value = horas + ":" + minutos;
+            }
+        }
+    </script>
   </body>
 </html>
