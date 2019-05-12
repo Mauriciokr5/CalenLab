@@ -116,8 +116,8 @@
 
 					$Resultados[] = array(
 					'title'=>$resultados['title'],
-					'start'=>$resultados['start'],
-					'end'=>$resultados['fin'],
+					'start'=>$resultados['start']->format('Y-m-d H:i:s'),
+					'end'=>$resultados['fin']->format('Y-m-d H:i:s'),
 					'Id_Reserva'=>	$resultados['Id_Reserva'],
 					'Grupo'=>$resultados['Grupo'],
 					'UnidadAprendizaje'=>$resultados['UnidadAprendizaje'],

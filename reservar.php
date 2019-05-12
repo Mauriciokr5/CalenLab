@@ -55,7 +55,7 @@
   <div class="container">
       <h1 class="rale">Reserva</h1>
     <div class="row justify-content-md-center">
-      <div class="man col-md-4">
+      <div class="man col-md-6">
 
         <form action="reservar.php" method="post">
           <input required="true" type="text" name="title" placeholder="Titulo" class="form-control"><br>
@@ -64,7 +64,16 @@
           <input required="true" type="text" name="Asunto" placeholder="Asunto" class="form-control"><br>
 
           <p style="color:#ffffff">Color de fondo</p>
-          <input required="true" type="color" name="color" class="form-control"><br>
+          <input required="true" type="color" name="color" class="form-control" list="colores" value="#053f5e"><br>
+          <datalist id="colores">
+            <option value="#022c43">
+            <option value="#053f5e">
+            <option value="#115173">
+            <option value="#834c69">
+            <option value="#33313b">
+            <option value="#393e46">
+            <option value="#393232">
+          </datalist>
           <select name="Laboratorios" class="form-control">
            <?php   
                     require 'database.php';
@@ -74,16 +83,27 @@
                       echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
                     }
                    ?>
-          </select><br>
-          <input required="true" type="color" name="textColor" class="form-control" placeholder="Color de texto"><br>
+          </select>
+          <input required="true" type="hidden" name="textColor" class="form-control" placeholder="Color de texto" value="#fff"><br>
+          
           <div>
-          <p style="color: #ffffff">Fecha de inicio</p>
-          <input required="true" type="date" min="<?php echo date("Y-m-d");?>" name="start"> <input required="true" type="time" name="start2">
+          <p style="color: #ffffff">Fecha</p>
+          <input required="true" type="date" min="<?php echo date("Y-m-d");?>" name="fecha" class="form-control"> 
           </div><br>
-          <div>
-          <p style="color: #ffffff">Fecha de termino</p>
-          <input required="true" type="date" min="<?php echo date("Y-m-d");?>" name="end"> <input required="true" type="time" name="end2">
-          </div><br>
+          <div class="row">
+
+
+            <div class="col-sm">
+            <p style="color: #ffffff">Hora de inicio</p>
+            <input required="true" type="time" name="start2" class="form-control">
+            </div>
+            <div  class="col-sm">
+            <p style="color: #ffffff">Hora de termino</p>
+            <input required="true" type="time" name="end2"  class="form-control">
+            </div>
+          </div>
+          <br>
+          
           <input type="submit" name="Insertar" value="Enviar" class="form-control bot">
         </form>
 
@@ -106,24 +126,37 @@
     $textColor=$_POST['textColor'];
 
 
-    $start=$_POST['start']." ".$_POST['start2'];
+    $start=$_POST['fecha']." ".$_POST['start2'];
     //$timestart = strtotime($start);
     //$timestart2=date('Y-m-d h:i:s',$timestart);
 
 
-    $end=$_POST['end']." ".$_POST['end2'];
+    $end=$_POST['fecha']." ".$_POST['end2'];
     //$timeend = strtotime($end);
     //$timeend2= date('Y-m-d h:i:s',$timeend);
 
-  $sql= "INSERT INTO Reserva (title,Grupo,UnidadAprendizaje,Asunto,color,Laboratorios,Usuario,textColor,start,fin) VALUES ('$title','$Grupo','$UnidadAprendizaje','$Asunto','$color','$Laboratorios','$Usuario','$textColor','$start','$end')";
+    $sentenciaVal= "SELECT * FROM Agenda2 WHERE Id_Laboratorios = $Laboratorios AND'$start' BETWEEN \"start\" AND \"fin\" OR '$end' BETWEEN \"start\" AND \"fin\" OR \"start\" BETWEEN '$start' AND '$end' ";
+    
+    $EjecutarVal = sqlsrv_query($con,$sentenciaVal);
+    //print_r($Ejecutar);
+    // $resultados = sqlsrv_fetch_array($Ejecutar,SQLSRV_FETCH_ASSOC);
+    // echo $resultados.length;
+    $resultadosVal = sqlsrv_has_rows($EjecutarVal);
+    if($resultadosVal === true){
+      echo "<script>alert('Existe un traslape');</script>";
+    }else{
+      $sql= "INSERT INTO Reserva (title,Grupo,UnidadAprendizaje,Asunto,color,Laboratorios,Usuario,textColor,start,fin) VALUES ('$title','$Grupo','$UnidadAprendizaje','$Asunto','$color','$Laboratorios','$Usuario','$textColor','$start','$end')";
 
-    $Ejecutar = sqlsrv_query($con,$sql);
+      $Ejecutar = sqlsrv_query($con,$sql);
 
-   if($Ejecutar === false){
-     die( print_r( sqlsrv_errors(), true));
-   }else {
-     echo "Todo bien";
-  }
+      if($Ejecutar === false){
+        die( print_r( sqlsrv_errors(), true));
+      }else {
+        echo "<script>location.replace(\"agendaLabos.php\");</script>";
+      }
+    }
+
+  
 }
 
 ?>
