@@ -18,7 +18,6 @@
   $DatoObtenido=ConsultarReserva($_GET['Id_Reserva']);
   function ConsultarReserva($No_Reserva){
   require 'database.php';
-  echo $No_Reserva;
  $Consulta2 = "SELECT * FROM Reserva WHERE Id_Reserva ='$No_Reserva'";
  $resultado = sqlsrv_query($con,$Consulta2);
 
@@ -97,7 +96,11 @@ return[
                     $sentencia= "SELECT * FROM Laboratorios WHERE Visibilidad = 1";
                     $resultado = sqlsrv_query($con,$sentencia);
                     while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
+                      if ($filas['Id_Laboratorios']==$DatoObtenido[6]) {
+                        echo '<option value="'.$filas['Id_Laboratorios'].'" selected>'.$filas['Laboratorio'].'</option>';
+                      }else {
+                        echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
+                      }
                     }
                    ?>
 
@@ -120,7 +123,7 @@ return[
         </div>
       </div>
     </div>
-    <?php echo $DatoObtenido[10]->format('Y-m-d').'T'.$DatoObtenido[10]->format('H:i:s') ?>
+    <?php echo $DatoObtenido[6] ?>
 
 
       <?php else: ?>

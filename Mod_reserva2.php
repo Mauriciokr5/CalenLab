@@ -40,6 +40,6 @@
  ?>
 
  <script type="text/javascript">
- 	window.location.href='AgendaAdmin.php';
+ 	window.location.href='AgendaAdmin.php?labs=<?php echo $Id_Laboratorios?>';
 
  </script>
