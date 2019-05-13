@@ -70,11 +70,11 @@
               <div class="row noms">
                 <div class="col-xs ancho">
                   <p style="color: #ffffff; text-align:center;">Inicio</p>
-                  <input required="true" type="time" name="inicioSemana" id="inicioSemana" class="form-control" oninput="validarHora2()">
+                  <input required="true" type="date" name="inicioSemana" id="inicioSemana" class="form-control" oninput="validarHora2()">
                 </div>
                 <div  class="col-xs ancho">
                   <p style="color: #ffffff; text-align:center;">Fin</p>
-                  <input required="true" type="time" name="finSemana" id="finSemana"  class="form-control">
+                  <input required="true" type="date" name="finSemana" id="finSemana"  class="form-control">
                 </div>
               </div>
               <br>
@@ -114,33 +114,15 @@
     }
   </style>
   <script>
-      /*function validarHora() {
+      function validarHora() {
           var horaInicio = document.getElementById("inicioHorasUso").value;
-          var remplazoUltimoNum = (parseInt(horaInicio.charAt(horaInicio.length - 1)) + 1) + "";
 
-          if (remplazoUltimoNum == '10') {
-              remplazoUltimoNum = '9';
-          }
-          var horaMinima = horaInicio.replaceAt((horaInicio.length - 1), remplazoUltimoNum);
-          console.log(horaMinima);
-
-          document.getElementById("finHorasUso").min = horaMinima;
+          document.getElementById("finHorasUso").min = horaInicio;
       }
       function validarHora2() {
           var horaInicio = document.getElementById("inicioSemana").value;
-          var remplazoUltimoNum = (parseInt(horaInicio.charAt(horaInicio.length - 1)) + 1) + "";
-
-          if (remplazoUltimoNum == '10') {
-              remplazoUltimoNum = '9';
-          }
-          var horaMinima = horaInicio.replaceAt((horaInicio.length - 1), remplazoUltimoNum);
-          console.log(horaMinima);
-
-          document.getElementById("finSemana").min = horaMinima;
+          document.getElementById("finSemana").min = horaInicio;
       }
-      String.prototype.replaceAt = function(index, replacement) {
-          return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-      }*/
   </script>
 
 
