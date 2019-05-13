@@ -52,8 +52,8 @@
 
 
     // Horas entre inicio y fin
-    $sentencia= "SELECT DATEDIFF(hh, \"start\", \"fin\") FROM Agenda2 WHERE Id_Laboratorios = $NumLABO AND'$start' BETWEEN \"start\" AND \"fin\" OR '$end' BETWEEN \"start\" AND \"fin\" OR \"start\" BETWEEN '$start' AND '$end' ";
-    echo $sentencia;
+    // $sentencia= "SELECT DATEDIFF(hh, \"start\", \"fin\") FROM Agenda2 WHERE Id_Laboratorios = $NumLABO AND'$start' BETWEEN \"start\" AND \"fin\" OR '$end' BETWEEN \"start\" AND \"fin\" OR \"start\" BETWEEN '$start' AND '$end' ";
+    // echo $sentencia;
     // Total horas entre fechas
     // SELECT SUM(DATEDIFF(hh, "start", "fin")) AS 'TotalHoras' FROM Agenda2 WHERE Id_Laboratorios = 1 AND'2019-05-15 00:00:00.000' BETWEEN "start" AND "fin" OR '2019-05-15 23:59:00.000' BETWEEN "start" AND "fin" OR "start" BETWEEN '2019-05-15 00:00:00.000' AND '2019-05-15 23:59:00.000'
 ?>

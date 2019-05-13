@@ -94,7 +94,7 @@
 					customButton:{
 						text:'Agregar Reserva',
 						click: function(){
-							window.location.href='reservar.php'
+							window.location.href='reservar.php?labs=<?php echo $_GET['labs']?>'
 					}
 				}
 			},

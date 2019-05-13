@@ -23,6 +23,7 @@
     }
 
   }
+  
 
  ?>
 
@@ -80,7 +81,11 @@
                     $sentencia= "SELECT * FROM Laboratorios WHERE Visibilidad = 1";
                     $resultado = sqlsrv_query($con,$sentencia);
                     while ($filas=sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-                      echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
+                      if ($filas['Id_Laboratorios']==$_GET['labs']) {
+                        echo '<option value="'.$filas['Id_Laboratorios'].'" selected>'.$filas['Laboratorio'].'</option>';
+                      }else {
+                        echo '<option value="'.$filas['Id_Laboratorios'].'">'.$filas['Laboratorio'].'</option>';
+                      }
                     }
                    ?>
           </select>

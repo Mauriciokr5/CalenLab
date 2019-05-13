@@ -46,16 +46,16 @@
           <div class="col-md-6 linea">
             <h1 class="titw">Horas de Uso</h1>
             <br>
-            <form action="graficaHorasUso">
+            <form action="graficaHorasUso.php" method="post">
               <div class="row noms">
                 <div class="col-xs ancho">
                   <p style="color: #ffffff; text-align:center;">Inicio</p>
-                  <input required="true" type="time" name="inicioHorasUso" id="inicioHorasUso" class="form-control" oninput="validarHora()">
+                  <input required="true" type="date" name="inicioHorasUso" id="inicioHorasUso" class="form-control" oninput="validarHora()">
                 </div>
                 
                 <div  class="col-xs ancho">
                   <p style="color: #ffffff; text-align:center;">Fin</p>
-                  <input required="true" type="time" name="finHorasUso" id="finHorasUso"  class="form-control">
+                  <input required="true" type="date" name="finHorasUso" id="finHorasUso"  class="form-control">
                 </div>
               </div>
               <br>
@@ -66,7 +66,7 @@
           <h1 class="titw">Horas por día de la semana</h1>
 
           <br>
-            <form action="graficaDiaSemana">
+            <form action="graficaDiaSemana.php"  method="post">
               <div class="row noms">
                 <div class="col-xs ancho">
                   <p style="color: #ffffff; text-align:center;">Inicio</p>
@@ -114,7 +114,7 @@
     }
   </style>
   <script>
-      function validarHora() {
+      /*function validarHora() {
           var horaInicio = document.getElementById("inicioHorasUso").value;
           var remplazoUltimoNum = (parseInt(horaInicio.charAt(horaInicio.length - 1)) + 1) + "";
 
@@ -140,7 +140,7 @@
       }
       String.prototype.replaceAt = function(index, replacement) {
           return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-      }
+      }*/
   </script>
 
 
