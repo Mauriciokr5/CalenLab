@@ -26,13 +26,13 @@
 		$color=$_POST['color'];
 		$Id_Laboratorios=$_POST['Laboratorios'];
 		$textColor=$_POST['textColor'];
-		$start=$_POST['start'];
-		$end=$_POST['end'];
+		$start=$_POST['start'].':00';
+		$end=$_POST['end'].':00';
+		echo $start;
+		// echo $Id_Usuario;
+		// echo $Id_Reserva;
 
-		echo $Id_Usuario;
-		echo $Id_Reserva;
-
-		$sentencia = "UPDATE Reserva SET title='$title',Grupo='$Grupo',UnidadAprendizaje='$UnidadAprendizaje',Asunto='Asunto',color='$color',Laboratorios='$Id_Laboratorios',Usuario='$Id_Usuario', textColor='$textColor', start='$start' , fin='$end' WHERE Id_Reserva='$Id_Reserva'";
+		$sentencia = "UPDATE Reserva SET title='$title',Grupo='$Grupo',UnidadAprendizaje='$UnidadAprendizaje',Asunto='Asunto',color='$color',Laboratorios='$Id_Laboratorios',Usuario='$Id_Usuario', textColor='$textColor', start=Convert(DATETIME, '$start',126) , fin=Convert(DATETIME, '$end',126) WHERE Id_Reserva='$Id_Reserva'";
 
 		$DatosConsulta=sqlsrv_query($con,$sentencia);
 
