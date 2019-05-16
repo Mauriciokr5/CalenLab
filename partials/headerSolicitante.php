@@ -5,7 +5,7 @@
       <nav>
         <ul>
           <li><a href="inicioSolicitante.php">Inicio</a></li>
-          <li><a href="AgendaSolicitante.php">Agenda</a></li>
+          <li><a href="agendaLabos.php">Agenda</a></li>
           <li><a href="logout.php">Cerrar Sesión</a></li>
         </ul>
       </nav>

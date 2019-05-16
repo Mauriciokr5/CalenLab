@@ -18,7 +18,7 @@
 
     $User = null;
 
-    if (count($Datos)>0 && ($TiposUsuario == 1 || $TiposUsuario==2) ) {
+    if (count($Datos)>0 && ($TiposUsuario == true) ) {
       $User = $Datos;
 
     }
@@ -61,8 +61,12 @@
 
     <?php if (!empty($User)):?>
 
-  <?php require 'partials/headerAdmin.php' ?>
-
+  <?php if ($_SESSION['TiposUsuario']==1||$_SESSION['TiposUsuario']==2) {
+    require 'partials/headerAdmin.php';
+  }else{
+    require 'partials/headerSolicitante.php'; 
+  }
+  ?>
 
   <div align="center" class="conte justify-content-md-center">
   	<?php 

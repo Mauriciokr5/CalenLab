@@ -6,7 +6,7 @@
 	if (substr($_FILES['excel']['name'],-3)=="csv")
 	{
 		$fecha		= date("Y-m-d_H-i-s");
-		$carpeta 	= "tmp_excel/";
+		$carpeta 	= "./tmp_excel/";
 		$excel  	= $fecha."-".$_FILES['excel']['name'];
 
 		move_uploaded_file($_FILES['excel']['tmp_name'], "$carpeta$excel");
@@ -23,7 +23,7 @@
 			{
 				$num = count($data);
 				$insertar="INSERT INTO Reserva (title,Grupo,UnidadAprendizaje,Asunto,color,Laboratorios,Usuario,textColor,start,fin) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]',convert(datetime,'$data[8]',103),convert(datetime,'$data[9]',103))";
-				$sql = sqlsrv_query ($con,$insertar) or die(print_r('
+				$sql = sqlsrv_query ($con,$insertar) or die(print_r(/*sqlsrv_errors()*/'
 				<script>
 					alert(`Carga completada`);
 					document.location.replace(\'Importar.php\');
@@ -41,7 +41,7 @@
 		}
 
 		fclose ($fp);
-		header('location: Importar.php');
+		//header('location: Importar.php');
 		exit;
 
 

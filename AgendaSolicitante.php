@@ -96,6 +96,45 @@
 					}
 				}
 			},
+			<?php  
+				require 'database.php';
+				$sentencia= "SELECT * FROM Agenda2 WHERE Id_Laboratorios = $NumLABO";
+
+				$Ejecutar = sqlsrv_query($con,$sentencia);
+				//print_r($Ejecutar);
+				$i=0;
+				while($resultados = sqlsrv_fetch_array($Ejecutar,SQLSRV_FETCH_ASSOC)){
+
+					$Resultados[] = array(
+					'title'=>$resultados['title'],
+					'start'=>$resultados['start']->format('Y-m-d H:i:s'),
+					'end'=>$resultados['fin']->format('Y-m-d H:i:s'),
+					'Id_Reserva'=>	$resultados['Id_Reserva'],
+					'Grupo'=>$resultados['Grupo'],
+					'UnidadAprendizaje'=>$resultados['UnidadAprendizaje'],
+					'Asunto'=>$resultados['Asunto'],
+					'color'=>$resultados['color'],
+					'Laboratorio'=>$resultados['Laboratorio'],
+					'Nombre'=>$resultados['Nombre'],
+					'textColor'=>$resultados['textColor'],
+					);
+
+					//$Cosa = 'Hola';
+					 //
+
+					//echo "que{$Cosa}cosa";
+				}
+				//echo json_encode($Resultados);
+				$res = json_encode($Resultados);
+				?>
+
+				<?php if ($Resultados) {
+					echo ("events:".$res.",");
+				} else{
+					
+				}
+
+				?>
 
 				//dayClick: function(date,jsEvent,view){
 
@@ -104,7 +143,7 @@
 					//$("#exampleModal").modal();
 				//},
 
-					events:"http://localhost/AgendaWeb/eventos.php",
+					//events:"http://localhost/AgendaWeb/eventos.php",
 
 				eventClick: function(calEvent,jsEvent,view){
 					let inicio = calEvent.start.toString();

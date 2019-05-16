@@ -57,9 +57,9 @@
     <div class="row justify-content-md-center">
       <div class="man col-md-4">
         <form action="signup.php" method="post">
-          <input required="true" type="text" name="ApPat" placeholder="Apellido Paterno" class="form-control" pattern="[A-Za-z ]"><br>
-          <input required="true" type="text" name="ApMat" placeholder="Apellido Materno" class="form-control" pattern="[A-Za-z ]"><br>
-          <input required="true" type="text" name="Nombre" placeholder="Nombre(s)" class="form-control" pattern="[A-Za-z ]"><br>
+          <input required="true" type="text" name="ApPat" placeholder="Apellido Paterno" class="form-control" ><br>
+          <input required="true" type="text" name="ApMat" placeholder="Apellido Materno" class="form-control" ><br>
+          <input required="true" type="text" name="Nombre" placeholder="Nombre(s)" class="form-control" ><br>
           <input required="true" type="email" name="Correo" placeholder="Correo Electronico" class="form-control"><br>
           <input required="true" type="text" name="Contraseña" placeholder="Contraseña" class="form-control"><br>
           <select required="true" name="Sexo" class="form-control">

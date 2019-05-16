@@ -18,7 +18,7 @@
 
     $User = null;
 
-    if (count($Datos)>0 && ($TiposUsuario == 1 || $TiposUsuario==2) ) {
+    if (count($Datos)>0 && ($TiposUsuario == true) ) {
       $User = $Datos;
 
     }
@@ -62,7 +62,12 @@
 
     <?php if (!empty($User)):?>
 
-  <?php require 'partials/headerAdmin.php' ?>
+  <?php if ($_SESSION['TiposUsuario']==1||$_SESSION['TiposUsuario']==2) {
+    require 'partials/headerAdmin.php';
+  }else{
+    require 'partials/headerSolicitante.php'; 
+  }
+  ?>
     <span><a href="AgregarReserva.php"></a> </span>
     <br><br>
 
@@ -89,15 +94,19 @@
 					center: 'title' ,
 					right: 'month,agendaWeek,agendaDay,listMonth'
 				},
-
-				customButtons:{
+				<?php if ($_SESSION['TiposUsuario']==1||$_SESSION['TiposUsuario']==2) {
+				    echo "customButtons:{
 					customButton:{
 						text:'Agregar Reserva',
 						click: function(){
-							window.location.href='reservar.php?labs=<?php echo $_GET['labs']?>'
+							window.location.href='reservar.php?labs=".$_GET['labs']."'
 					}
 				}
-			},
+			},";
+				  }
+				  ?>
+
+				
 
 				//dayClick: function(date,jsEvent,view){
 
@@ -134,14 +143,26 @@
 					//echo "que{$Cosa}cosa";
 				}
 				//echo json_encode($Resultados);
-				$res = json_encode($Resultados);
+				if (isset($Resultados)) {
+					$res = json_encode($Resultados);	
+					echo ("events:".$res.",");
+				}else{
+					echo'events:[] ,';
+				}
+				/*if ($Resultados) {
+					$res = json_encode($Resultados);	
+					if ($resultados) {
+						echo ("events:".$res.",");
+					} else{
+						echo'events:[] ,';
+					}
+				}else{
+					echo'events:[] ,';
+				}*/
+				
 				?>
 
-				<?php if ($Resultados) {
-					echo ("events:".$res.",");
-				} else{
-					
-				}
+				<?php 
 
 				?>
 
@@ -258,6 +279,7 @@
 	</div>
 
 		<script type="text/javascript">
+
 		$('#Modificar').click(function(){
 			Recolectar();
 			var Id_Reserva = NuevoEvento.id;
