@@ -1,0 +1,71 @@
+[33mcommit c54500347af798539afcbce3aecb04dd354372f5[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Wed May 15 19:10:09 2019 -0500
+
+    Proyecto terminado
+
+[33mcommit c8c97b70912c0a1e12077c6869bdb62a71cb8695[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Tue May 14 10:43:44 2019 -0500
+
+    Carga desde csv terminada
+
+[33mcommit d493657ffe6a364b37d3e8362aeff724c7cffe70[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Mon May 13 00:44:57 2019 -0500
+
+    grafica Horas por dia de la semana terminada
+
+[33mcommit 6910f9372722074cd8fb9fc4eaa959f25edab5fa[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Mon May 13 00:08:59 2019 -0500
+
+    mod_reserva2.php corregido para cambiar fechas
+
+[33mcommit d901edc8fb44c63171adfe780cf7afed6560b04e[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 23:17:25 2019 -0500
+
+    grafica Horas de Uso y paso de variable laboratorio a reserva
+
+[33mcommit 28478b5f3212ab04a3405879e7ff5daf08521502[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 19:25:06 2019 -0500
+
+    diseno y estructura de Graficas.php
+
+[33mcommit add86a36eda547709b11ca2528647516dd35a3f8[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 17:52:08 2019 -0500
+
+    autollenado laboratorio Mod_Reserva.php
+
+[33mcommit bbd4e6b1a7cf671c7b33c25c588c9f55637fe86b[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 16:07:21 2019 -0500
+
+    pagina de Mod_Reserva.php corregida a la base de datos
+
+[33mcommit f973da19d65538df9397359c77a64966b2f78d1d[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 14:35:22 2019 -0500
+
+    validacion de fecha fin y cambio en horas en punto
+
+[33mcommit caad045a570110f7c825a27fa28ecd8c9e407297[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Sun May 12 00:51:13 2019 -0500
+
+    Traslape y redireccionamiento solucionado
+
+[33mcommit 985548fbe24878fa79d7b32c07af3bd5544abf89[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Fri May 10 19:44:00 2019 -0500
+
+    version joss mamalona
+
+[33mcommit 6d71e602d55a6da3818ed239527afddce35c5009[m
+Author: Kronos <mauricio_noble6@hotmail.com>
+Date:   Thu May 9 23:00:04 2019 -0500
+
+    Version mau

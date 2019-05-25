@@ -130,14 +130,20 @@ echo "</tbody>";
         <td>1</td>
         <td>2</td>
         <td>#FFFFFF</td>
-        <td>2019-03-16 10:30:00</td>
-        <td>2019-04-17 18:30:00</td>
+        <td>18/03/2019  15:30:00</td>
+        <td>18/03/2019  16:30:00</td>
       </tr>
     </tbody>
 </table>
 </div>
 
 <hr width="80%">
+<div class="cont">
+<a href="./tmp_excel/FormatoEjemplo.csv" download="FormatoEjemplo.csv" class="dow">
+Descargar Formato
+</a>
+
+</div>
 <br><br><br>
 
 <div >
@@ -159,6 +165,46 @@ echo "</tbody>";
 
 <style type="text/css">
   .Holis{
+    display: flex;
+    justify-content: space-around;
+  }
+  .dow{
+    color: #f9f7f7;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
+    position: absolute;
+    background-color:#112d4e;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
+
+  }
+
+  .dow:hover {
+    color: #f9f7f7;
+  }
+
+  .dow::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background-color: #f9f7f7;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 0%;
+
+    transition: all ease-in-out 250ms;
+  }
+
+  .dow:hover::before {
+    width: 100%;
+  }
+  
+  .cont{
     display: flex;
     justify-content: space-around;
   }
